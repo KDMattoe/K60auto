@@ -1,0 +1,15 @@
+"C:\software\hardware\arm\bin\armproc.dll" 
+
+"C:\software\hardware\arm\bin\armjlink2.dll" 
+
+"C:\Users\matteo\Documents\K60\软件\K60Test\20190312\FREESCALE\Debug\Exe\LQ_K60_FTM_PWM_SERVO_KEY_OLED.out" 
+
+--plugin "C:\software\hardware\arm\bin\armbat.dll" 
+
+--device_macro "C:\software\hardware\arm\config\debugger\NXP\Kxx.dmac" 
+
+--device_macro "C:\software\hardware\arm\config\debugger\NXP\Kxx_Trace.dmac" 
+
+
+
+
