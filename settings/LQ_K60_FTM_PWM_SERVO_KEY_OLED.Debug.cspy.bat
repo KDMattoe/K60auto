@@ -25,7 +25,7 @@ if not "%~1" == "" goto debugFile
 
 @echo on 
 
-"C:\software\hardware\common\bin\cspybat" -f "C:\Users\matteo\Documents\K60\软件\K60Test\20190312\FREESCALE\settings\LQ_K60_FTM_PWM_SERVO_KEY_OLED.Debug.general.xcl" --backend -f "C:\Users\matteo\Documents\K60\软件\K60Test\20190312\FREESCALE\settings\LQ_K60_FTM_PWM_SERVO_KEY_OLED.Debug.driver.xcl" 
+"C:\software\hardware\common\bin\cspybat" -f "C:\Users\matteo\Desktop\FREESCALE\settings\LQ_K60_FTM_PWM_SERVO_KEY_OLED.Debug.general.xcl" --backend -f "C:\Users\matteo\Desktop\FREESCALE\settings\LQ_K60_FTM_PWM_SERVO_KEY_OLED.Debug.driver.xcl" 
 
 @echo off 
 goto end 
@@ -34,7 +34,7 @@ goto end
 
 @echo on 
 
-"C:\software\hardware\common\bin\cspybat" -f "C:\Users\matteo\Documents\K60\软件\K60Test\20190312\FREESCALE\settings\LQ_K60_FTM_PWM_SERVO_KEY_OLED.Debug.general.xcl" "--debug_file=%~1" --backend -f "C:\Users\matteo\Documents\K60\软件\K60Test\20190312\FREESCALE\settings\LQ_K60_FTM_PWM_SERVO_KEY_OLED.Debug.driver.xcl" 
+"C:\software\hardware\common\bin\cspybat" -f "C:\Users\matteo\Desktop\FREESCALE\settings\LQ_K60_FTM_PWM_SERVO_KEY_OLED.Debug.general.xcl" "--debug_file=%~1" --backend -f "C:\Users\matteo\Desktop\FREESCALE\settings\LQ_K60_FTM_PWM_SERVO_KEY_OLED.Debug.driver.xcl" 
 
 @echo off 
 :end

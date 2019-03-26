@@ -36,6 +36,9 @@ LCD_SCL--PTC16
 =============================================================
 ******************************************************************************************************/
 #include "include.h"
+#define 22 HCSR_TRIG;
+#define 23 HCSR_ECHO;
+
 u8 PIT0_f=0;
 
 void control(void);
@@ -50,7 +53,11 @@ void drive_init(){
     PLL_Init(PLL200);         //初始化PLL为200M，总线为100MHZ  
     LCD_Init();
     UART_Init(UART4,38400);     //串口4初始化
-    PIT_Init(pit0,
+    GPIO_Init(PORTB, HCSR_TRIG, 1, 0); //超声波trig
+    GPIO_Init(PORTB, HCSR_ECHO, 0, 0); //超声波echo
+    EXTI_Init(PORTB,23, either_down);//初始化外部中断
+                                     //初始化DMA定时器
+    
 }
 
 //主函数
@@ -71,4 +78,24 @@ void main(void)
       time_delay_ms(100);
     };
    
+}
+
+void PORTB_Interrupt()
+{
+  int n;
+  n=HCSR_ECHO;
+  if((PORTB_ISFR & (1<<n)))
+  {
+      PORTB_ISFR |= (1<<n); 
+      /* 用户自行添加中断内程序 */
+      
+      
+      
+  } 
+  n=1;
+  if((PORTB_ISFR & (1<<n)))
+  {
+      PORTB_ISFR |= (1<<n); 
+      /* 用户自行添加中断内程序 */
+  } 
 }

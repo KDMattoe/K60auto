@@ -13,6 +13,7 @@
 #include "GPIO.h"
 
 
+
 GPIO_MemMapPtr GPIOX[5] = {PTA_BASE_PTR, PTB_BASE_PTR, PTC_BASE_PTR, PTD_BASE_PTR, PTE_BASE_PTR}; //定义五个指针数组保存 GPIOX 的地址
 PORT_MemMapPtr PORTX[5] = {PORTA_BASE_PTR, PORTB_BASE_PTR, PORTC_BASE_PTR, PORTD_BASE_PTR, PORTE_BASE_PTR};
 //-------------------------------------------------------------------------*
@@ -153,22 +154,7 @@ void PORTA_Interrupt()
   } 
 }
 
-void PORTB_Interrupt()
-{
-  int n;
-  n=0;
-  if((PORTB_ISFR & (1<<n)))
-  {
-      PORTB_ISFR |= (1<<n); 
-      /* 用户自行添加中断内程序 */
-  } 
-  n=1;
-  if((PORTB_ISFR & (1<<n)))
-  {
-      PORTB_ISFR |= (1<<n); 
-      /* 用户自行添加中断内程序 */
-  } 
-}
+
 
 void PORTC_Interrupt()
 {

@@ -23,9 +23,9 @@
 
 if ($debugfile -eq "")
 {
-& "C:\software\hardware\common\bin\cspybat" -f "C:\Users\matteo\Documents\K60\软件\K60Test\20190312\FREESCALE\settings\LQ_K60_FTM_PWM_SERVO_KEY_OLED.Debug.general.xcl" --backend -f "C:\Users\matteo\Documents\K60\软件\K60Test\20190312\FREESCALE\settings\LQ_K60_FTM_PWM_SERVO_KEY_OLED.Debug.driver.xcl" 
+& "C:\software\hardware\common\bin\cspybat" -f "C:\Users\matteo\Desktop\FREESCALE\settings\LQ_K60_FTM_PWM_SERVO_KEY_OLED.Debug.general.xcl" --backend -f "C:\Users\matteo\Desktop\FREESCALE\settings\LQ_K60_FTM_PWM_SERVO_KEY_OLED.Debug.driver.xcl" 
 }
 else
 {
-& "C:\software\hardware\common\bin\cspybat" -f "C:\Users\matteo\Documents\K60\软件\K60Test\20190312\FREESCALE\settings\LQ_K60_FTM_PWM_SERVO_KEY_OLED.Debug.general.xcl" --debug_file=$debugfile --backend -f "C:\Users\matteo\Documents\K60\软件\K60Test\20190312\FREESCALE\settings\LQ_K60_FTM_PWM_SERVO_KEY_OLED.Debug.driver.xcl" 
+& "C:\software\hardware\common\bin\cspybat" -f "C:\Users\matteo\Desktop\FREESCALE\settings\LQ_K60_FTM_PWM_SERVO_KEY_OLED.Debug.general.xcl" --debug_file=$debugfile --backend -f "C:\Users\matteo\Desktop\FREESCALE\settings\LQ_K60_FTM_PWM_SERVO_KEY_OLED.Debug.driver.xcl" 
 }
