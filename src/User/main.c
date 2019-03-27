@@ -1,13 +1,4 @@
 /****************************************************************************************************
-【平    台】龙邱K60VG核心板
-【编    写】CHIUSIR
-【E-mail  】chiusir@163.com
-【软件版本】V1.0
-【最后更新】2016年09月01日
-【相关信息参考下列地址】
-【网    站】http://www.lqist.cn
-【淘宝店铺】http://shop36265907.taobao.com
-------------------------------------------------
 【dev.env.】IAR7.3
 【busclock】100.000MHz
 【pllclock】200.000MHz
@@ -36,12 +27,19 @@ LCD_SCL--PTC16
 =============================================================
 ******************************************************************************************************/
 #include "include.h"
-#define 22 HCSR_TRIG;
-#define 23 HCSR_ECHO;
-
-u8 PIT0_f=0;
+#define HCSR_TRIG 22
+#define HCSR_ECHO 23
 
 void control(void);
+void HCSR_pull_trig();
+uint32 get_distance(uint32 cnt);
+
+
+
+u8 PIT0_f=0;
+uint32 distance=0;
+
+
 void time_delay_ms(u32 ms)
 {
   LPTMR_delay_ms(ms);
@@ -53,49 +51,58 @@ void drive_init(){
     PLL_Init(PLL200);         //初始化PLL为200M，总线为100MHZ  
     LCD_Init();
     UART_Init(UART4,38400);     //串口4初始化
-    GPIO_Init(PORTB, HCSR_TRIG, 1, 0); //超声波trig
-    GPIO_Init(PORTB, HCSR_ECHO, 0, 0); //超声波echo
-    EXTI_Init(PORTB,23, either_down);//初始化外部中断
-                                     //初始化DMA定时器
-    
+    GPIO_Init(PORTB, HCSR_TRIG, GPO, 0);          //超声波trig
+    GPIO_Init(PORTB, HCSR_ECHO, GPI, 0);          //超声波echo
+    EXTI_Init(PTB, HCSR_ECHO, either_down);   //初始化外部中断
+    // gpio_init (PORTA, 17, 1,0);
 }
 
 //主函数
 void main(void)
 {
     DisableInterrupts;        //关闭总中断
-    
+    drive_init();
     EnableInterrupts;            //开启中断
     
     
     while(1){
-    LCD_CLS();
-      
-      
+      LCD_CLS();
       time_delay_ms(100);
       UART_Put_Str(UART4, "hello");
-      LCD_P6x8Str(2, 3,"hello darling");
+      LCD_PrintU16(2, 3,distance);
+      HCSR_pull_trig();
       time_delay_ms(100);
     };
    
 }
 
+
+
+uint32 get_distance(uint32 cnt){
+    return (uint32)cnt*(331.4+0.607*20)/2000;
+}
+void HCSR_pull_trig(void){
+    GPIO_Ctrl(PORTB, HCSR_TRIG, 1);
+    LPTMR_delay_us(20);
+}
+
+
 void PORTB_Interrupt()
 {
-  int n;
+  int n,cnt;
   n=HCSR_ECHO;
   if((PORTB_ISFR & (1<<n)))
   {
       PORTB_ISFR |= (1<<n); 
       /* 用户自行添加中断内程序 */
-      
-      
-      
-  } 
-  n=1;
-  if((PORTB_ISFR & (1<<n)))
-  {
-      PORTB_ISFR |= (1<<n); 
-      /* 用户自行添加中断内程序 */
-  } 
+      if(GPIO_Get(PTB23)){           //收到高电平
+        pit_time_get(PIT0);                     //清空定时器
+        pit_time_start(PIT0);                        //打开定时器
+      } else {                                  //结束测距 
+        cnt = pit_time_get_us(PIT0);               //获取时钟周期
+        distance = get_distance(cnt);           //计算结果为毫米级别
+      }
+
+  }
+  
 }

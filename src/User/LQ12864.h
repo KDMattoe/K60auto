@@ -23,6 +23,8 @@ extern void Draw_LQLogo(void);
 extern void Draw_LibLogo(void);
 extern void Draw_BMP(unsigned char x0,unsigned char y0,unsigned char x1,unsigned char y1,unsigned char * bmp); 
 extern void Draw_Road(void);
+extern void LCD_PrintU16(unsigned char x,unsigned char y,unsigned int num);
+
 
 
 #endif

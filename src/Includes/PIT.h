@@ -32,4 +32,15 @@ void PIT1_Interrupt();
 void PIT2_Interrupt();
 void PIT3_Interrupt();
 
+void pit_delay(PITn pitn, uint32 cnt);
+void pit_delay_ms(PITn pitn, uint32 cnt);
+void pit_delay_us(PITn pitn, uint32 cnt);
+
+void pit_time_start(PITn pitn);
+uint32 pit_time_get(PITn pitn);
+uint32 pit_time_get_us(PITn pitn);
+uint32 pit_time_get_ms(PITn pitn);
+
+void pit_close(PITn pitn);
+
 #endif  
