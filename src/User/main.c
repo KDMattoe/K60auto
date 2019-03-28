@@ -66,12 +66,13 @@ void main(void)
     
     
     while(1){
+      
       LCD_CLS();
-      time_delay_ms(100);
-      UART_Put_Str(UART4, "hello");
-      LCD_PrintU16(2, 3,distance);
+      LCD_PrintU16(15, 3,distance);
+      time_delay_ms(67);
       HCSR_pull_trig();
-      time_delay_ms(100);
+      
+      
     };
    
 }
@@ -81,9 +82,14 @@ void main(void)
 uint32 get_distance(uint32 cnt){
     return (uint32)cnt*(331.4+0.607*20)/2000;
 }
+
+
 void HCSR_pull_trig(void){
     GPIO_Ctrl(PORTB, HCSR_TRIG, 1);
     LPTMR_delay_us(20);
+    
+    GPIO_Ctrl(PORTB, HCSR_TRIG, 0);
+
 }
 
 
@@ -96,7 +102,7 @@ void PORTB_Interrupt()
       PORTB_ISFR |= (1<<n); 
       /* 用户自行添加中断内程序 */
       if(GPIO_Get(PTB23)){           //收到高电平
-        pit_time_get(PIT0);                     //清空定时器
+        //pit_close(PIT0);                     //清空定时器
         pit_time_start(PIT0);                        //打开定时器
       } else {                                  //结束测距 
         cnt = pit_time_get_us(PIT0);               //获取时钟周期
