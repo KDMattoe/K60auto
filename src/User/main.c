@@ -18,26 +18,27 @@ LCD_DC --PTC19
 LCD_RST--PTC18
 LCD_SDA--PTC17
 LCD_SCL--PTC16
-=============================================================
-实验现象：
-按下K0，占空比恢复初值
-按下K1，占空比增加
-按下K2，占空比减小
-并在0.96寸OLED屏上显示数值
+
+HCSR(超声波测距模块定义（待定）：
+HCSR_1_TRIG PTB22
+HCSR_1_ECHO PTB23
+HCSR_2_TRIG PTB24
+HCSR_2_ECHO PTB25
+HCSR_3_TRIG PTB26
+HCSR_3_ECHO PTB27
+HCSR_4_TRIG PTB28
+HCSR_4_ECHO PTB29
+HCSR_5_TRIG PTB30
+HCSR_5_ECHO PTB31
 =============================================================
 ******************************************************************************************************/
 #include "include.h"
-#define HCSR_TRIG 22
-#define HCSR_ECHO 23
 
-void control(void);
-void HCSR_pull_trig();
-uint32 get_distance(uint32 cnt);
+
 
 
 
 u8 PIT0_f=0;
-uint32 distance=0;
 
 
 void time_delay_ms(u32 ms)
@@ -45,15 +46,14 @@ void time_delay_ms(u32 ms)
   LPTMR_delay_ms(ms);
 }
 
-s16 a[8];
-
 void drive_init(){
     PLL_Init(PLL200);         //初始化PLL为200M，总线为100MHZ  
     LCD_Init();
     UART_Init(UART4,38400);     //串口4初始化
-    GPIO_Init(PORTB, HCSR_TRIG, GPO, 0);          //超声波trig
-    GPIO_Init(PORTB, HCSR_ECHO, GPI, 0);          //超声波echo
+    HCSR_Init();                //超声波传感器初始化 
     EXTI_Init(PTB, HCSR_ECHO, either_down);   //初始化外部中断
+    
+    PIT_Init(PIT1, 20);
     // gpio_init (PORTA, 17, 1,0);
 }
 
@@ -69,8 +69,6 @@ void main(void)
       
       LCD_CLS();
       LCD_PrintU16(15, 3,distance);
-      time_delay_ms(67);
-      HCSR_pull_trig();
       
       
     };
@@ -78,37 +76,3 @@ void main(void)
 }
 
 
-
-uint32 get_distance(uint32 cnt){
-    return (uint32)cnt*(331.4+0.607*20)/2000;
-}
-
-
-void HCSR_pull_trig(void){
-    GPIO_Ctrl(PORTB, HCSR_TRIG, 1);
-    LPTMR_delay_us(20);
-    
-    GPIO_Ctrl(PORTB, HCSR_TRIG, 0);
-
-}
-
-
-void PORTB_Interrupt()
-{
-  int n,cnt;
-  n=HCSR_ECHO;
-  if((PORTB_ISFR & (1<<n)))
-  {
-      PORTB_ISFR |= (1<<n); 
-      /* 用户自行添加中断内程序 */
-      if(GPIO_Get(PTB23)){           //收到高电平
-        //pit_close(PIT0);                     //清空定时器
-        pit_time_start(PIT0);                        //打开定时器
-      } else {                                  //结束测距 
-        cnt = pit_time_get_us(PIT0);               //获取时钟周期
-        distance = get_distance(cnt);           //计算结果为毫米级别
-      }
-
-  }
-  
-}

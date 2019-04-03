@@ -2537,6 +2537,9 @@
     <group>
         <name>User</name>
         <file>
+            <name>$PROJ_DIR$\src\User\Control.c</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\src\User\include.h</name>
         </file>
         <file>

@@ -51,11 +51,6 @@ void PIT0_Interrupt()
   PIT0_f=1;
 }
 
-void PIT1_Interrupt()
-{
-  PIT_Flag_Clear(PIT1);       //清中断标志位
- /*用户添加所需代码*/
-}
 
 void PIT2_Interrupt()
 {
@@ -132,6 +127,59 @@ void pit_delay_us(PITn pitn, uint32 cnt){
  *  Sample usage:
                     pit_time_start(PIT0);                          //PIT0计时开始
  */
+
+
+void pit_time_start_notClear(){
+  //PIT 用的是 Bus Clock 总线频率
+    //溢出计数 = 总线频率 * 时间
+
+    SIM_SCGC6       |= SIM_SCGC6_PIT_MASK;                          //使能PIT时钟
+
+    PIT_MCR         &= ~(PIT_MCR_MDIS_MASK | PIT_MCR_FRZ_MASK );    //使能PIT定时器时钟 ，调试模式下继续运行
+
+    PIT_TCTRL(pitn) &= ~( PIT_TCTRL_TEN_MASK );                     //禁用PIT ，以便设置加载值生效
+
+    PIT_LDVAL(pitn)  = ~0;                                          //设置溢出中断时间
+
+    PIT_Flag_Clear(pitn);                                           //清中断标志位
+
+    PIT_TCTRL(pitn) &= ~ PIT_TCTRL_TEN_MASK;                        //禁止PITn定时器（用于清空计数值）
+    PIT_TCTRL(pitn)  = ( 0
+                         | PIT_TCTRL_TEN_MASK                        //使能 PITn定时器
+                         //| PIT_TCTRL_TIE_MASK                      //开PITn中断
+                       );
+    
+}
+
+
+
+uint32 pit_time_get_notClear(PITn pitn)
+{
+    uint32 val;
+
+
+    if(PIT_TFLG(pitn)& PIT_TFLG_TIF_MASK)                           //判断是否时间超时
+    {
+        PIT_Flag_Clear(pitn);                                       //清中断标志位
+        PIT_TCTRL(pitn) &= ~ PIT_TCTRL_TEN_MASK;                    //禁止PITn定时器（用于清空计数值）
+        PIT_TCTRL(pitn)  = ( 0
+                         | PIT_TCTRL_TEN_MASK                        //使能 PITn定时器
+                         );
+                                                                    //~0 = 42s 949 ms 67us 296  
+    }
+    val = (~0) - PIT_CVAL(pitn);
+
+    if(val == (~0))
+    {
+        val--;              //确保 不等于 ~0
+    }
+    return val;
+}
+
+
+
+
+
 void pit_time_start(PITn pitn)
 {
     //PIT 用的是 Bus Clock 总线频率
@@ -165,6 +213,7 @@ void pit_time_start(PITn pitn)
                             printf("\n计时时间为：%d us",time*1000/bus_clk_khz);
                         }
  */
+
 uint32 pit_time_get(PITn pitn)
 {
     uint32 val;
@@ -184,6 +233,7 @@ uint32 pit_time_get(PITn pitn)
     }
     return val;
 }
+
 //!!!!!!!!!!!!!!!!!!注意 下方两条只能用于PLL200的情况下
 uint32 pit_time_get_us(PITn pitn)
 {
@@ -193,9 +243,6 @@ uint32 pit_time_get_ms(PITn pitn)
 {
   return pit_time_get(pitn)/100000;
 }
-
-
-
 
 
 
