@@ -36,8 +36,6 @@ HCSR_5_ECHO PTB31
 
 
 
-
-
 u8 PIT0_f=0;
 
 
@@ -50,8 +48,11 @@ void drive_init(){
     PLL_Init(PLL200);         //初始化PLL为200M，总线为100MHZ  
     LCD_Init();
     UART_Init(UART4,38400);     //串口4初始化
+    int i=0;
     HCSR_Init();                //超声波传感器初始化 
-    EXTI_Init(PTB, HCSR_ECHO, either_down);   //初始化外部中断
+    for(i=0; i<5; i++){
+      EXTI_Init(PTB, sensor[i].ECHO, either_down);   //初始化外部中断
+    }
     
     PIT_Init(PIT1, 20);
     // gpio_init (PORTA, 17, 1,0);
@@ -68,11 +69,30 @@ void main(void)
     while(1){
       
       LCD_CLS();
-      LCD_PrintU16(15, 3,distance);
       
       
     };
    
 }
-
+void PORTB_Interrupt()
+{
+  int n,cnt,i;
+  i=0;
+  for(i=0;i<5;i++ ){
+    n = sensor[i].ECHO;
+    if((PORTB_ISFR & (1<<n)))
+  {
+      PORTB_ISFR |= (1<<n); 
+      /* 用户自行添加中断内程序 */
+      if(GPIO_Get(PTB23)){           //收到高电平
+        //pit_close(PIT0);                     //清空定时器
+        pit_time_start(PIT0);                        //打开定时器
+      } else {                                  //结束测距 
+        cnt = pit_time_get_us(PIT0);               //获取时钟周期
+      }
+  }
+  }
+  
+  
+}
 

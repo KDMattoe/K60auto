@@ -1,5 +1,6 @@
 #include "include.h"
-
+#include "HCSR.h"
+struct HCSR_Struct sensor[5];
 void HCSR_Init(void){
     //减掉三十二是因为PORTB从32开始
     GPIO_Init(PORTB, HCSR_1_TRIG-32, GPO, 0);          //超声波trig 
@@ -17,16 +18,16 @@ void HCSR_Init(void){
 
 //TODO
 uint32 get_distance(uint8 index,uint32 cnt){
-    sensor[index].
+    
     
     return (uint32)cnt*(331.4+0.607*20)/2000;
 }
 
 
-void HCSR_pull_trig(void){
-    GPIO_Ctrl(PORTB, HCSR_TRIG, 1);
+void HCSR_pull_trig( struct HCSR_Struct s){
+    GPIO_Ctrl(PORTB, s.TRIG, 1);
     LPTMR_delay_us(20);
     
-    GPIO_Ctrl(PORTB, HCSR_TRIG, 0);
+    GPIO_Ctrl(PORTB, s.TRIG, 0);
 
 }

@@ -129,7 +129,7 @@ void pit_delay_us(PITn pitn, uint32 cnt){
  */
 
 
-void pit_time_start_notClear(){
+void pit_time_start_notClear(PITn pitn){
   //PIT 用的是 Bus Clock 总线频率
     //溢出计数 = 总线频率 * 时间
 

@@ -1,7 +1,5 @@
 #ifndef HCSR_H
 #define HCSR_H
-#include "include.h"
-
 
 #define HCSR_1_TRIG PTB22
 #define HCSR_1_ECHO PTB23
@@ -21,13 +19,11 @@ struct HCSR_Struct {
   uint32 start_time;    //ms
   uint32 stop_time;     //ms
 };
-
-struct HCSR_Struct sensor[5];
-void HCSR_Init();
+extern struct HCSR_Struct sensor[5];
+void HCSR_Init(void);
 uint32 get_distance(uint8 index,uint32 cnt);
-void HCSR_pull_trig(void);
+void HCSR_pull_trig( struct HCSR_Struct s);
 
-uint32 get_distance(uint8 index, uint32 cnt);
 
 
 #endif

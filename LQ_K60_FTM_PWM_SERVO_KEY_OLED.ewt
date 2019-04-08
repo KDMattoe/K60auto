@@ -2429,6 +2429,15 @@
             </file>
         </group>
         <group>
+            <name>HCSR</name>
+            <file>
+                <name>$PROJ_DIR$\src\User\HCSR.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\src\User\HCSR.h</name>
+            </file>
+        </group>
+        <group>
             <name>I2C</name>
             <file>
                 <name>$PROJ_DIR$\src\Source\I2C.c</name>
