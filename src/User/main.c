@@ -30,13 +30,15 @@ HCSR_4_TRIG PTB28
 HCSR_4_ECHO PTB29
 HCSR_5_TRIG PTB30
 HCSR_5_ECHO PTB31
+
+定时器使用情况：
+PIT0用于超声波测距模块
+PIT1用于控制周期
+LPTMR低功耗定时器用于常用定时
 =============================================================
 ******************************************************************************************************/
 #include "include.h"
 
-
-
-u8 PIT0_f=0;
 
 
 void time_delay_ms(u32 ms)
@@ -45,16 +47,16 @@ void time_delay_ms(u32 ms)
 }
 
 void drive_init(){
-    PLL_Init(PLL200);         //初始化PLL为200M，总线为100MHZ  
+    PLL_Init(PLL200);                                   //初始化PLL为200M，总线为100MHZ  
     LCD_Init();
-    UART_Init(UART4,38400);     //串口4初始化
+    UART_Init(UART4,38400);                             //串口4初始化
     int i=0;
-    HCSR_Init();                //超声波传感器初始化 
+    HCSR_Init();                                        //超声波传感器初始化 
     for(i=0; i<5; i++){
-      EXTI_Init(PTB, sensor[i].ECHO, either_down);   //初始化外部中断
+      EXTI_Init(PTB, sensor[i].ECHO, either_down);       //初始化外部中断
     }
     
-    PIT_Init(PIT1, 20);
+    PIT_Init(PIT1, 60);                                 //定时器1用于控制周期
     // gpio_init (PORTA, 17, 1,0);
 }
 
@@ -64,35 +66,12 @@ void main(void)
     DisableInterrupts;        //关闭总中断
     drive_init();
     EnableInterrupts;            //开启中断
-    
+    pit_time_start(PIT0);                        //打开定时器
     
     while(1){
       
-      LCD_CLS();
-      
-      
+
     };
    
-}
-void PORTB_Interrupt()
-{
-  int n,cnt,i;
-  i=0;
-  for(i=0;i<5;i++ ){
-    n = sensor[i].ECHO;
-    if((PORTB_ISFR & (1<<n)))
-  {
-      PORTB_ISFR |= (1<<n); 
-      /* 用户自行添加中断内程序 */
-      if(GPIO_Get(PTB23)){           //收到高电平
-        //pit_close(PIT0);                     //清空定时器
-        pit_time_start(PIT0);                        //打开定时器
-      } else {                                  //结束测距 
-        cnt = pit_time_get_us(PIT0);               //获取时钟周期
-      }
-  }
-  }
-  
-  
 }
 
