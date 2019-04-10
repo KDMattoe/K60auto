@@ -150,7 +150,7 @@
                 <RecentlyUsedMenus>1</RecentlyUsedMenus>
                 <MenuShadows>1</MenuShadows>
                 <ShowAllMenusAfterDelay>1</ShowAllMenusAfterDelay>
-                <CommandsUsage>5505000013001386000017000000198000000100000010860000360200002CE10000050000005F860000020000000C81000004000000568600007E0200002BE100000100000000810000010000001F810000180000000E810000030000005E860000080000000B8100000100000000E10000030000001681000001000000118600001A000000468100004500000060860000040000005D86000002000000</CommandsUsage>
+                <CommandsUsage>510800001400198000000100000013860000190000002CE1000005000000108600002E0300005F860000020000000C8100000400000056860000590400002BE100000100000000810000010000005E860000080000000E810000030000001F8100002000000000E10000030000000B81000001000000058100000200000011860000200000001681000001000000468100005D00000060860000040000005D86000003000000</CommandsUsage>
             </MFCToolBarParameters>
             <CommandManager>
                 <CommandsWithoutImages>09000D8400000F84000008840000FFFFFFFF54840000328100001C81000009840000D4840000</CommandsWithoutImages>
@@ -883,6 +883,10 @@
                     <item>first</item>
                     <item>cnt</item>
                     <item>sensor[index].distance</item>
+                    <item>sensor[1].ECHO</item>
+                    <item>sensor[1].TRIG</item>
+                    <item>index</item>
+                    <item>sensor[index].TRIG</item>
                     <item></item>
                 </expressions>
                 <col-names>
@@ -892,10 +896,10 @@
                     <item>Value</item>
                 </col-names>
                 <col-widths>
-                    <item>78</item>
+                    <item>134</item>
                     <item>150</item>
                     <item>100</item>
-                    <item>182</item>
+                    <item>215</item>
                 </col-widths>
             </IarPane-34099>
             <Pane-34100>

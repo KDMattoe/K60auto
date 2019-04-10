@@ -12,6 +12,7 @@
 #ifndef __GPIO_H__
 #define __GPIO_H__
 
+#define PORTB_OFFSET 32
 
 typedef enum PORTx
 {

@@ -52,7 +52,8 @@ void drive_init(){
     UART_Init(UART4,38400);                             //串口4初始化
     int i=0;
     HCSR_Init();                                        //超声波传感器初始化 
-    for(i=0; i<5; i++){
+    
+    for(i=0; i<HCSR_SENSOR_SIZE; i++){
       EXTI_Init(PTB, sensor[i].ECHO, either_down);       //初始化外部中断
     }
     
