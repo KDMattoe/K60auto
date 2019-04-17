@@ -21,6 +21,7 @@ struct HCSR_Struct {
   uint32 stop_time;     //ms
   uint8 flag;
 };
+
 extern struct HCSR_Struct sensor[HCSR_SENSOR_SIZE];
 void HCSR_Init(void);
 uint32 get_distance(uint8 index);

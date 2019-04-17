@@ -1,14 +1,10 @@
-"D:\iar\arm\bin\armproc.dll" 
+"C:\software\hardware\arm\bin\armproc.dll" 
 
-"D:\iar\arm\bin\armjlink2.dll" 
+"C:\software\hardware\arm\bin\armsim2.dll" 
 
-"F:\哆啦E梦\大三\K60\软件\K60Test\20190311\图像读取\Release\Exe\c.out" 
+"C:\Users\matteo\Desktop\FREESCALE\Release\Exe\LQ_K60_FTM_PWM_SERVO_KEY_OLED.out" 
 
---plugin="D:\iar\arm\bin\armbat.dll" 
-
---device_macro="D:\iar\arm\config\debugger\NXP\Kxx.dmac" 
-
---device_macro="D:\iar\arm\config\debugger\NXP\Kxx_Trace.dmac" 
+--plugin "C:\software\hardware\arm\bin\armbat.dll" 
 
 
 

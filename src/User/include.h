@@ -16,7 +16,7 @@
 #include "LQMT9V034.h"
 #include "ADC.h" 
 #include "GPIO.h" 
- #include "GPIO_Cfg.h"
+#include "GPIO_Cfg.h"
 #include "PLL.h" 
 #include "UART.h" 
 #include "vectors.h"
@@ -31,9 +31,11 @@
 #include "LQKEY.h"
 #include "HCSR.h"
 #include "LQ12864.h"
+#include "Control.h"
+#include "cxcpid.h"
+#include "eletrical.h"
+#include "IDC.h"
 
-  
-     
    
 
 #endif

@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ELF Linker V8.22.1.15669/W32 for ARM                10/Apr/2019  18:04:37
+# IAR ELF Linker V8.22.1.15669/W32 for ARM                17/Apr/2019  11:00:10
 # Copyright 2007-2018 IAR Systems AB.
 #
 #    Output file  =  
@@ -8,17 +8,20 @@
 #    Map file     =  
 #        C:\Users\matteo\Desktop\FREESCALE\Debug\List\LQ_K60_FTM_PWM_SERVO_KEY_OLED.map
 #    Command line =  
-#        -f C:\Users\matteo\AppData\Local\Temp\EWE3CF.tmp
+#        -f C:\Users\matteo\AppData\Local\Temp\EWC615.tmp
 #        (C:\Users\matteo\Desktop\FREESCALE\Debug\Obj\ADC.o
 #        C:\Users\matteo\Desktop\FREESCALE\Debug\Obj\common.o
 #        C:\Users\matteo\Desktop\FREESCALE\Debug\Obj\Control.o
 #        C:\Users\matteo\Desktop\FREESCALE\Debug\Obj\crt0.o
+#        C:\Users\matteo\Desktop\FREESCALE\Debug\Obj\cxcpid.o
 #        C:\Users\matteo\Desktop\FREESCALE\Debug\Obj\DAC.o
 #        C:\Users\matteo\Desktop\FREESCALE\Debug\Obj\DMA.o
+#        C:\Users\matteo\Desktop\FREESCALE\Debug\Obj\eletrical.o
 #        C:\Users\matteo\Desktop\FREESCALE\Debug\Obj\FTM.o
 #        C:\Users\matteo\Desktop\FREESCALE\Debug\Obj\GPIO.o
 #        C:\Users\matteo\Desktop\FREESCALE\Debug\Obj\HCSR.o
 #        C:\Users\matteo\Desktop\FREESCALE\Debug\Obj\I2C.o
+#        C:\Users\matteo\Desktop\FREESCALE\Debug\Obj\IDC.o
 #        C:\Users\matteo\Desktop\FREESCALE\Debug\Obj\Lptmr.o
 #        C:\Users\matteo\Desktop\FREESCALE\Debug\Obj\LQ12864.o
 #        C:\Users\matteo\Desktop\FREESCALE\Debug\Obj\LQKEY.o
@@ -89,7 +92,7 @@ No sections matched the following patterns:
   .noinit              ro code  0x00000410    0x3c  crt0.o [1]
                               - 0x0000044c    0x3c
 
-"P1", part 1 of 2:                          0x1b44
+"P1", part 1 of 2:                          0x22c4
   .text                ro code  0x0000044c   0x3f4  LQ12864.o [1]
   .text                ro code  0x00000840   0x248  GPIO.o [1]
   .text                ro code  0x00000a88    0xb8  common.o [1]
@@ -99,58 +102,77 @@ No sections matched the following patterns:
   .text                ro code  0x0000102a     0xa  xsprout.o [3]
   .text                ro code  0x00001034    0x36  strlen.o [5]
   .text                ro code  0x0000106a     0x2  vectors.o [1]
-  .text                ro code  0x0000106c   0x246  DblDiv.o [4]
-  .rodata              const    0x000012b4   0x228  LQ12864.o [1]
-  .text                ro code  0x000014dc   0x1ac  Control.o [1]
-  .text                ro code  0x00001688   0x158  HCSR.o [1]
-  .text                ro code  0x000017e0   0x148  PIT.o [1]
-  .text                ro code  0x00001928    0x1a  U32ToDbl.o [4]
-  .text                ro code  0x00001944   0x1a2  DblMul.o [4]
-  .text                ro code  0x00001ae8    0x28  DblToU32.o [4]
-  .text                ro code  0x00001b10    0x80  Lptmr.o [1]
-  .text                ro code  0x00001b90   0x154  PLL.o [1]
-  .text                ro code  0x00001ce4    0xac  start.o [1]
-  .text                ro code  0x00001d90    0x38  wdog.o [1]
-  .text                ro code  0x00001dc8    0x5e  main.o [1]
-  .text                ro code  0x00001e28    0x40  FTM.o [1]
-  .text                ro code  0x00001e68    0x40  zero_init3.o [5]
-  .data_init                    0x00001ea8    0x40  <Block>
-    Initializer bytes  const    0x00001ea8    0x40  <for .data-1>
-  .text                ro code  0x00001ee8    0x28  data_init.o [5]
-  .iar.init_table      const    0x00001f10    0x10  - Linker created -
-  .text                ro code  0x00001f20    0x1e  cmain.o [5]
-  .text                ro code  0x00001f3e     0x4  low_level_init.o [3]
-  .text                ro code  0x00001f42     0x4  exit.o [3]
-  .text                ro code  0x00001f48     0xa  cexit.o [5]
-  .text                ro code  0x00001f54    0x14  exit.o [6]
-  .rodata              const    0x00001f68    0x14  UART.o [1]
-  .text                ro code  0x00001f7c     0xc  cstartup_M.o [5]
-  .rodata              const    0x00001f88     0x8  Control.o [1]
-  .rodata              const    0x00001f90     0x0  zero_init3.o [5]
-                              - 0x00001f90  0x1b44
+  .text                ro code  0x0000106c   0x25c  Control.o [1]
+  .text                ro code  0x000012c8   0x158  HCSR.o [1]
+  .text                ro code  0x00001420    0xa8  eletrical.o [1]
+  .text                ro code  0x000014c8   0x148  PIT.o [1]
+  .text                ro code  0x00001610    0x1a  U32ToDbl.o [4]
+  .text                ro code  0x0000162c   0x1a2  DblMul.o [4]
+  .text                ro code  0x000017d0   0x246  DblDiv.o [4]
+  .text                ro code  0x00001a18    0x28  DblToU32.o [4]
+  .text                ro code  0x00001a40    0x80  Lptmr.o [1]
+  .text                ro code  0x00001ac0   0x244  FTM.o [1]
+  .text                ro code  0x00001d04    0xd4  cxcpid.o [1]
+  .text                ro code  0x00001dd8    0x22  S32ToDbl.o [4]
+  .text                ro code  0x00001dfc    0xe2  DblSub.o [4]
+  .text                ro code  0x00001ee0   0x178  DblAdd.o [4]
+  .text                ro code  0x00002058    0x3a  DblToS32.o [4]
+  .rodata              const    0x00002094   0x228  LQ12864.o [1]
+  .text                ro code  0x000022bc   0x154  PLL.o [1]
+  .text                ro code  0x00002410    0xac  start.o [1]
+  .text                ro code  0x000024bc    0x38  wdog.o [1]
+  .text                ro code  0x000024f4    0x6e  main.o [1]
+  .text                ro code  0x00002564    0x58  ADC.o [1]
+  .data_init                    0x000025bc    0x64  <Block>
+    Initializer bytes  const    0x000025bc    0x64  <for .data-1>
+  .text                ro code  0x00002620    0x40  zero_init3.o [5]
+  .text                ro code  0x00002660    0x28  data_init.o [5]
+  .iar.init_table      const    0x00002688    0x10  - Linker created -
+  .text                ro code  0x00002698    0x1e  cmain.o [5]
+  .text                ro code  0x000026b6     0x4  low_level_init.o [3]
+  .text                ro code  0x000026ba     0x4  exit.o [3]
+  .text                ro code  0x000026c0     0xa  cexit.o [5]
+  .text                ro code  0x000026cc    0x14  exit.o [6]
+  .rodata              const    0x000026e0    0x14  UART.o [1]
+  .text                ro code  0x000026f4     0xc  cstartup_M.o [5]
+  .rodata              const    0x00002700     0x8  Control.o [1]
+  .rodata              const    0x00002708     0x8  Control.o [1]
+  .rodata              const    0x00002710     0x0  zero_init3.o [5]
+                              - 0x00002710  0x22c4
 
 "P1", part 2 of 2:                             0x0
-  CodeRelocate                  0x00001f90     0x0  <Block>
+  CodeRelocate                  0x00002710     0x0  <Block>
 
-"P2", part 1 of 3:                            0x40
-  .data                         0x1fff0410    0x40  <Block>
-    .data-1                     0x1fff0410    0x40  <Init block>
-      .data            inited   0x1fff0410    0x14  GPIO.o [1]
-      .data            inited   0x1fff0424    0x14  GPIO.o [1]
-      .data            inited   0x1fff0438    0x18  UART.o [1]
-                              - 0x1fff0450    0x40
+"P2", part 1 of 3:                            0x64
+  .data                         0x1fff0410    0x64  <Block>
+    .data-1                     0x1fff0410    0x62  <Init block>
+      .data            inited   0x1fff0410     0x8  cxcpid.o [1]
+      .data            inited   0x1fff0418     0x8  cxcpid.o [1]
+      .data            inited   0x1fff0420     0x4  cxcpid.o [1]
+      .data            inited   0x1fff0424     0xc  FTM.o [1]
+      .data            inited   0x1fff0430    0x14  GPIO.o [1]
+      .data            inited   0x1fff0444    0x14  GPIO.o [1]
+      .data            inited   0x1fff0458    0x18  UART.o [1]
+      .data            inited   0x1fff0470     0x2  eletrical.o [1]
+                              - 0x1fff0474    0x64
 
-"P2", part 2 of 3:                            0x68
-  .bss                          0x1fff0450    0x68  <Block>
-    .bss               zero     0x1fff0450    0x64  HCSR.o [1]
-    .bss               zero     0x1fff04b4     0x1  Control.o [1]
-    .bss               zero     0x1fff04b5     0x1  Control.o [1]
-    .bss               zero     0x1fff04b6     0x1  PLL.o [1]
-    .bss               zero     0x1fff04b7     0x1  PLL.o [1]
-                              - 0x1fff04b8    0x68
+"P2", part 2 of 3:                            0xac
+  .bss                          0x1fff0478    0xac  <Block>
+    .bss               zero     0x1fff0478    0x28  cxcpid.o [1]
+    .bss               zero     0x1fff04a0     0x8  cxcpid.o [1]
+    .bss               zero     0x1fff04a8    0x64  HCSR.o [1]
+    .bss               zero     0x1fff050c     0x8  IDC.o [1]
+    .bss               zero     0x1fff0514     0x2  eletrical.o [1]
+    .bss               zero     0x1fff0516     0x2  eletrical.o [1]
+    .bss               zero     0x1fff0518     0x1  Control.o [1]
+    .bss               zero     0x1fff0519     0x1  Control.o [1]
+    .bss               zero     0x1fff051a     0x1  main.o [1]
+    .bss               zero     0x1fff051b     0x1  PLL.o [1]
+    .bss               zero     0x1fff051c     0x1  PLL.o [1]
+                              - 0x1fff0520    0xac
 
 "P2", part 3 of 3:                             0x0
-  CodeRelocateRam               0x1fff04b8     0x0  <Block>
+  CodeRelocateRam               0x1fff0520     0x0  <Block>
 
 
 *******************************************************************************
@@ -160,8 +182,8 @@ No sections matched the following patterns:
           Address     Size
           -------     ----
 Zero (__iar_zero_init3)
-    1 destination range, total size 0x68:
-          0x1fff0450  0x68
+    1 destination range, total size 0xa5:
+          0x1fff0478  0xa5
 
 
 
@@ -172,10 +194,12 @@ Zero (__iar_zero_init3)
     Module            ro code  ro data  rw data
     ------            -------  -------  -------
 C:\Users\matteo\Desktop\FREESCALE\Debug\Obj: [1]
-    Control.o             428        8        2
-    FTM.o                  64
+    ADC.o                  88
+    Control.o             604       16        2
+    FTM.o                 580       12       12
     GPIO.o                584       40       40
     HCSR.o                344               100
+    IDC.o                                     8
     LQ12864.o           1 012      552
     Lptmr.o               128
     PIT.o                 328
@@ -183,12 +207,14 @@ C:\Users\matteo\Desktop\FREESCALE\Debug\Obj: [1]
     UART.o                872       44       24
     common.o              184
     crt0.o                 60
-    main.o                 94
+    cxcpid.o              212       20       68
+    eletrical.o           168        2        6
+    main.o                110                 1
     start.o               172
     vectors.o               2    1 040
     wdog.o                 56
     -------------------------------------------
-    Total:              4 668    1 684      168
+    Total:              5 844    1 726      263
 
 command line: [2]
     -------------------------------------------
@@ -204,12 +230,16 @@ dl7M_tlf.a: [3]
     Total:                404
 
 m7M_tl.a: [4]
+    DblAdd.o              376
     DblDiv.o              582
     DblMul.o              418
+    DblSub.o              226
+    DblToS32.o             58
     DblToU32.o             40
+    S32ToDbl.o             34
     U32ToDbl.o             26
     -------------------------------------------
-    Total:              1 066
+    Total:              1 760
 
 rt7M_tl.a: [5]
     cexit.o                10
@@ -226,10 +256,10 @@ shb_l.a: [6]
     -------------------------------------------
     Total:                 20
 
-    Gaps                   10        2
-    Linker created                  16
+    Gaps                   16        2
+    Linker created                  18
 -----------------------------------------------
-    Grand Total:        6 378    1 702      168
+    Grand Total:        8 254    1 746      263
 
 
 *******************************************************************************
@@ -238,31 +268,40 @@ shb_l.a: [6]
 
 Entry                      Address   Size  Type      Object
 -----                      -------   ----  ----      ------
-.bss$$Base              0x1fff0450          --   Gb  - Linker created -
-.bss$$Limit             0x1fff04b8          --   Gb  - Linker created -
+.bss$$Base              0x1fff0478          --   Gb  - Linker created -
+.bss$$Limit             0x1fff0520          --   Gb  - Linker created -
 .data$$Base             0x1fff0410          --   Gb  - Linker created -
-.data$$Limit            0x1fff0450          --   Gb  - Linker created -
-.data_init$$Base        0x00001ea8          --   Gb  - Linker created -
-.data_init$$Limit       0x00001ee8          --   Gb  - Linker created -
-.iar.init_table$$Base   0x00001f10          --   Gb  - Linker created -
-.iar.init_table$$Limit  0x00001f20          --   Gb  - Linker created -
-?main                   0x00001f21         Code  Gb  cmain.o [5]
-CodeRelocate$$Base      0x00001f90          --   Gb  - Linker created -
-CodeRelocate$$Limit     0x00001f90          --   Gb  - Linker created -
-CodeRelocateRam$$Base   0x1fff04b8          --   Gb  - Linker created -
-CodeRelocateRam$$Limit  0x1fff04b8          --   Gb  - Linker created -
-Controller              0x0000153f   0x32  Code  Gb  Control.o [1]
+.data$$Limit            0x1fff0474          --   Gb  - Linker created -
+.data_init$$Base        0x000025bc          --   Gb  - Linker created -
+.data_init$$Limit       0x00002620          --   Gb  - Linker created -
+.iar.init_table$$Base   0x00002688          --   Gb  - Linker created -
+.iar.init_table$$Limit  0x00002698          --   Gb  - Linker created -
+?main                   0x00002699         Code  Gb  cmain.o [5]
+ADC_Init                0x00002565   0x4a  Code  Gb  ADC.o [1]
+CodeRelocate$$Base      0x00002710          --   Gb  - Linker created -
+CodeRelocate$$Limit     0x00002710          --   Gb  - Linker created -
+CodeRelocateRam$$Base   0x1fff0520          --   Gb  - Linker created -
+CodeRelocateRam$$Limit  0x1fff0520          --   Gb  - Linker created -
+Controller              0x00001141   0x32  Code  Gb  Control.o [1]
+D_DATA                  0x1fff0418    0x8  Data  Gb  cxcpid.o [1]
+DirecChange             0x1fff0516    0x2  Data  Gb  eletrical.o [1]
 EXTI_Init               0x00000907   0x66  Code  Gb  GPIO.o [1]
-F6x8                    0x000012b4  0x228  Data  Gb  LQ12864.o [1]
-FTM0_interrupt          0x00001e29   0x10  Code  Gb  FTM.o [1]
-FTM1_interrupt          0x00001e39   0x10  Code  Gb  FTM.o [1]
-FTM2_interrupt          0x00001e49   0x10  Code  Gb  FTM.o [1]
-GPIOX                   0x1fff0410   0x14  Data  Gb  GPIO.o [1]
+F6x8                    0x00002094  0x228  Data  Gb  LQ12864.o [1]
+FTM0_interrupt          0x00001c8b   0x10  Code  Gb  FTM.o [1]
+FTM1_interrupt          0x00001c9b   0x10  Code  Gb  FTM.o [1]
+FTM2_interrupt          0x00001cab   0x10  Code  Gb  FTM.o [1]
+FTMN                    0x1fff0424    0xc  Data  Gb  FTM.o [1]
+FTM_PWM_Duty            0x00001c75   0x16  Code  Gb  FTM.o [1]
+FTM_PWM_Init            0x00001ac1  0x1b4  Code  Gb  FTM.o [1]
+GPIOX                   0x1fff0430   0x14  Data  Gb  GPIO.o [1]
 GPIO_Ctrl               0x000008c9   0x22  Code  Gb  GPIO.o [1]
 GPIO_Get                0x000008eb   0x1c  Code  Gb  GPIO.o [1]
 GPIO_Init               0x00000841   0x88  Code  Gb  GPIO.o [1]
-HCSR_Init               0x00001689   0x82  Code  Gb  HCSR.o [1]
-HCSR_pull_trig          0x00001793   0x3a  Code  Gb  HCSR.o [1]
+HCSR_Init               0x000012c9   0x82  Code  Gb  HCSR.o [1]
+HCSR_pull_trig          0x000013d3   0x3a  Code  Gb  HCSR.o [1]
+IDC                     0x1fff050c    0x8  Data  Gb  IDC.o [1]
+I_DATA                  0x1fff04a0    0x8  Data  Gb  cxcpid.o [1]
+IncPIDCalc              0x00001d49   0x7e  Code  Gb  cxcpid.o [1]
 LCD_CLS                 0x000005b5   0x3c  Code  Gb  LQ12864.o [1]
 LCD_DLY_ms              0x000005f1   0x16  Code  Gb  LQ12864.o [1]
 LCD_Fill                0x00000575   0x40  Code  Gb  LQ12864.o [1]
@@ -272,29 +311,31 @@ LCD_PrintU16            0x00000795   0xa4  Code  Gb  LQ12864.o [1]
 LCD_Set_Pos             0x00000545   0x30  Code  Gb  LQ12864.o [1]
 LCD_WrCmd               0x000004c9   0x7c  Code  Gb  LQ12864.o [1]
 LCD_WrDat               0x0000044d   0x7c  Code  Gb  LQ12864.o [1]
-LPTMR_Interrupt         0x00001b6b    0xe  Code  Gb  Lptmr.o [1]
-LPTMR_delay_us          0x00001b11   0x5a  Code  Gb  Lptmr.o [1]
-PIT0_Interrupt          0x00001655   0x16  Code  Gb  Control.o [1]
-PIT1_Interrupt          0x00001571   0x18  Code  Gb  Control.o [1]
-PIT2_Interrupt          0x00001853    0xe  Code  Gb  PIT.o [1]
-PIT3_Interrupt          0x00001861    0xe  Code  Gb  PIT.o [1]
-PIT_Init                0x000017e1   0x72  Code  Gb  PIT.o [1]
-PLL_Init                0x00001b91  0x154  Code  Gb  PLL.o [1]
+LPTMR_Interrupt         0x00001a9b    0xe  Code  Gb  Lptmr.o [1]
+LPTMR_delay_us          0x00001a41   0x5a  Code  Gb  Lptmr.o [1]
+PID_Init                0x00001d05   0x44  Code  Gb  cxcpid.o [1]
+PIT0_Interrupt          0x00001271   0x16  Code  Gb  Control.o [1]
+PIT1_Interrupt          0x00001191   0x14  Code  Gb  Control.o [1]
+PIT2_Interrupt          0x0000153b    0xe  Code  Gb  PIT.o [1]
+PIT3_Interrupt          0x00001549    0xe  Code  Gb  PIT.o [1]
+PIT_Init                0x000014c9   0x72  Code  Gb  PIT.o [1]
+PLL_Init                0x000022bd  0x154  Code  Gb  PLL.o [1]
 PORTA_Interrupt         0x0000096d   0x3a  Code  Gb  GPIO.o [1]
-PORTB_Interrupt         0x00001589   0xcc  Code  Gb  Control.o [1]
+PORTB_Interrupt         0x000011a5   0xcc  Code  Gb  Control.o [1]
 PORTC_Interrupt         0x000009a7   0x3a  Code  Gb  GPIO.o [1]
 PORTD_Interrupt         0x00000a1b   0x3a  Code  Gb  GPIO.o [1]
 PORTE_Interrupt         0x000009e1   0x3a  Code  Gb  GPIO.o [1]
-PORTX                   0x1fff0424   0x14  Data  Gb  GPIO.o [1]
-Region$$Table$$Base     0x00001f10          --   Gb  - Linker created -
-Region$$Table$$Limit    0x00001f20          --   Gb  - Linker created -
+PORTX                   0x1fff0444   0x14  Data  Gb  GPIO.o [1]
+P_DATA                  0x1fff0410    0x8  Data  Gb  cxcpid.o [1]
+Region$$Table$$Base     0x00002688          --   Gb  - Linker created -
+Region$$Table$$Limit    0x00002698          --   Gb  - Linker created -
 UART0_IRQHandler        0x00000d8d   0x22  Code  Gb  UART.o [1]
 UART1_IRQHandler        0x00000daf   0x22  Code  Gb  UART.o [1]
 UART2_IRQHandler        0x00000dd1   0x22  Code  Gb  UART.o [1]
 UART3_IRQHandler        0x00000df3   0x22  Code  Gb  UART.o [1]
 UART4_IRQHandler        0x00000e15   0x22  Code  Gb  UART.o [1]
 UART5_IRQHandler        0x00000e37   0x22  Code  Gb  UART.o [1]
-UARTN                   0x1fff0438   0x18  Data  Gb  UART.o [1]
+UARTN                   0x1fff0458   0x18  Data  Gb  UART.o [1]
 UART_Get_Char           0x00000d39   0x1c  Code  Gb  UART.o [1]
 UART_Init               0x00000b41  0x1f8  Code  Gb  UART.o [1]
 UART_Put_Char           0x00000d55   0x1c  Code  Gb  UART.o [1]
@@ -305,44 +346,59 @@ __BOOT_STACK_ADDRESS {Abs}
                         0x2000fff8         Data  Gb  command line/config [2]
 __VECTOR_RAM {Abs}      0x1fff0000         Data  Gb  command line/config [2]
 __VECTOR_TABLE {Abs}    0x00000000         Data  Gb  command line/config [2]
-__aeabi_d2uiz           0x00001ae9         Code  Gb  DblToU32.o [4]
-__aeabi_ddiv            0x0000106d         Code  Gb  DblDiv.o [4]
-__aeabi_dmul            0x00001945         Code  Gb  DblMul.o [4]
-__aeabi_ui2d            0x00001929         Code  Gb  U32ToDbl.o [4]
-__cmain                 0x00001f21         Code  Gb  cmain.o [5]
-__exit                  0x00001f55   0x14  Code  Gb  exit.o [6]
-__iar_data_init3        0x00001ee9   0x28  Code  Gb  data_init.o [5]
-__iar_program_start     0x00001f7d         Code  Gb  cstartup_M.o [5]
+__aeabi_d2iz            0x00002059         Code  Gb  DblToS32.o [4]
+__aeabi_d2uiz           0x00001a19         Code  Gb  DblToU32.o [4]
+__aeabi_dadd            0x00001ee1         Code  Gb  DblAdd.o [4]
+__aeabi_ddiv            0x000017d1         Code  Gb  DblDiv.o [4]
+__aeabi_dmul            0x0000162d         Code  Gb  DblMul.o [4]
+__aeabi_dsub            0x00001dfd         Code  Gb  DblSub.o [4]
+__aeabi_i2d             0x00001dd9         Code  Gb  S32ToDbl.o [4]
+__aeabi_ui2d            0x00001611         Code  Gb  U32ToDbl.o [4]
+__cmain                 0x00002699         Code  Gb  cmain.o [5]
+__exit                  0x000026cd   0x14  Code  Gb  exit.o [6]
+__iar_dadd              0x00001e0d         Code  Gb  DblSub.o [4]
+__iar_data_init3        0x00002661   0x28  Code  Gb  data_init.o [5]
+__iar_dsub              0x00001ef1         Code  Gb  DblAdd.o [4]
+__iar_dsubStart         0x00001f03         Code  Gb  DblAdd.o [4]
+__iar_program_start     0x000026f5         Code  Gb  cstartup_M.o [5]
 __iar_systems$$module {Abs}
                         0x00000001         Data  Gb  command line/config [2]
-__iar_zero_init3        0x00001e69   0x40  Code  Gb  zero_init3.o [5]
-__low_level_init        0x00001f3f    0x4  Code  Gb  low_level_init.o [3]
+__iar_zero_init3        0x00002621   0x40  Code  Gb  zero_init3.o [5]
+__low_level_init        0x000026b7    0x4  Code  Gb  low_level_init.o [3]
 __startup               0x00000411         Code  Gb  crt0.o [1]
 __vector_table          0x00000000  0x410  Data  Gb  vectors.o [1]
-_call_main              0x00001f2d         Code  Gb  cmain.o [5]
-_exit                   0x00001f49         Code  Gb  cexit.o [5]
-_main                   0x00001f3b         Code  Gb  cmain.o [5]
-bus_clk                 0x1fff04b7    0x1  Data  Gb  PLL.o [1]
-common_startup          0x00001cf5   0x74  Code  Gb  start.o [1]
-core_clk                0x1fff04b6    0x1  Data  Gb  PLL.o [1]
+_call_main              0x000026a5         Code  Gb  cmain.o [5]
+_exit                   0x000026c1         Code  Gb  cexit.o [5]
+_main                   0x000026b3         Code  Gb  cmain.o [5]
+bus_clk                 0x1fff051c    0x1  Data  Gb  PLL.o [1]
+common_startup          0x00002421   0x74  Code  Gb  start.o [1]
+core_clk                0x1fff051b    0x1  Data  Gb  PLL.o [1]
 default_isr             0x0000106b    0x2  Code  Gb  vectors.o [1]
-drive_init              0x00001dc9   0x44  Code  Gb  main.o [1]
+dir                     0x1fff0514    0x2  Data  Gb  eletrical.o [1]
+direction               0x1fff0470    0x2  Data  Gb  eletrical.o [1]
+drive_init              0x000024f5   0x52  Code  Gb  main.o [1]
+electrical_control      0x00001455   0x62  Code  Gb  eletrical.o [1]
+electrical_init         0x00001421   0x34  Code  Gb  eletrical.o [1]
 enable_irq              0x00000a8f   0x96  Code  Gb  common.o [1]
-exit                    0x00001f43    0x4  Code  Gb  exit.o [3]
-get_distance            0x0000170b   0x88  Code  Gb  HCSR.o [1]
-main                    0x00001e15   0x12  Code  Gb  main.o [1]
+exit                    0x000026bb    0x4  Code  Gb  exit.o [3]
+get_distance            0x0000134b   0x88  Code  Gb  HCSR.o [1]
+main                    0x0000254d   0x16  Code  Gb  main.o [1]
 out                     0x00000ee9   0x1c  Code  Lc  xprintftiny.o [3]
-pit_time_get_notClear   0x0000186f   0x1a  Code  Gb  PIT.o [1]
-pit_time_start          0x00001889   0x88  Code  Gb  PIT.o [1]
-screen_flash_rate       0x1fff04b5    0x1  Data  Gb  Control.o [1]
-sensor                  0x1fff0450   0x64  Data  Gb  HCSR.o [1]
-sensor_shift_flag       0x1fff04b4    0x1  Data  Gb  Control.o [1]
+pit1                    0x00001173   0x1e  Code  Gb  Control.o [1]
+pit1_f                  0x1fff051a    0x1  Data  Gb  main.o [1]
+pit_time_get_notClear   0x00001557   0x1a  Code  Gb  PIT.o [1]
+pit_time_start          0x00001571   0x88  Code  Gb  PIT.o [1]
+sPID                    0x1fff0478   0x28  Data  Lc  cxcpid.o [1]
+screen_flash_rate       0x1fff0519    0x1  Data  Gb  Control.o [1]
+sensor                  0x1fff04a8   0x64  Data  Gb  HCSR.o [1]
+sensor_shift_flag       0x1fff0518    0x1  Data  Gb  Control.o [1]
 sprintf                 0x00000ea9   0x40  Code  Gb  sprintf.o [3]
-start                   0x00001ce5   0x10  Code  Gb  start.o [1]
+sptr                    0x1fff0420    0x4  Data  Lc  cxcpid.o [1]
+start                   0x00002411   0x10  Code  Gb  start.o [1]
 strlen                  0x00001035         Code  Gb  strlen.o [5]
-view_                   0x000014dd   0x62  Code  Gb  Control.o [1]
-wdog_disable            0x00001d91   0x16  Code  Gb  wdog.o [1]
-wdog_unlock             0x00001da9   0x16  Code  Gb  wdog.o [1]
+view_                   0x0000106d   0xd4  Code  Gb  Control.o [1]
+wdog_disable            0x000024bd   0x16  Code  Gb  wdog.o [1]
+wdog_unlock             0x000024d5   0x16  Code  Gb  wdog.o [1]
 write_vtor              0x00000a89    0x6  Code  Gb  common.o [1]
 
 
@@ -353,9 +409,9 @@ write_vtor              0x00000a89    0x6  Code  Gb  common.o [1]
 [5] = rt7M_tl.a
 [6] = shb_l.a
 
-  6 378 bytes of readonly  code memory
-  1 702 bytes of readonly  data memory
-    168 bytes of readwrite data memory
+  8 254 bytes of readonly  code memory
+  1 746 bytes of readonly  data memory
+    263 bytes of readwrite data memory
 
 Errors: none
 Warnings: none

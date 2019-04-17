@@ -2086,6 +2086,15 @@
             </file>
         </group>
         <group>
+            <name>Eletrical</name>
+            <file>
+                <name>$PROJ_DIR$\src\User\eletrical.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\src\User\eletrical.h</name>
+            </file>
+        </group>
+        <group>
             <name>FTM</name>
             <file>
                 <name>$PROJ_DIR$\src\Source\FTM.c</name>
@@ -2125,6 +2134,15 @@
             </file>
         </group>
         <group>
+            <name>IDC</name>
+            <file>
+                <name>$PROJ_DIR$\src\User\IDC.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\src\User\IDC.h</name>
+            </file>
+        </group>
+        <group>
             <name>Lptmr</name>
             <file>
                 <name>$PROJ_DIR$\src\Source\Lptmr.c</name>
@@ -2149,6 +2167,15 @@
             </file>
             <file>
                 <name>$PROJ_DIR$\src\Includes\LQLED.h</name>
+            </file>
+        </group>
+        <group>
+            <name>PID</name>
+            <file>
+                <name>$PROJ_DIR$\src\User\cxcpid.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\src\User\cxcpid.h</name>
             </file>
         </group>
         <group>
@@ -2223,8 +2250,14 @@
     </group>
     <group>
         <name>User</name>
+        <group>
+            <name>moto</name>
+        </group>
         <file>
             <name>$PROJ_DIR$\src\User\Control.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\User\Control.h</name>
         </file>
         <file>
             <name>$PROJ_DIR$\src\User\include.h</name>

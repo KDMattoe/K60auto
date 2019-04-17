@@ -64,8 +64,5 @@ void HCSR_pull_trig(uint8 index){
     GPIO_Ctrl(PORTB, sensor[index].TRIG, 1);
     LPTMR_delay_us(20);
     GPIO_Ctrl(PORTB, sensor[index].TRIG, 0);
-    
    
-    
-
 }
