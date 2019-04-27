@@ -137,19 +137,19 @@ void EXTI_Init(PORTx portx, u8 n, exti_cfg cfg)
                       gpio外部中断函数
                       内容自行添加
 *****************************************************************/
-void PORTA_Interrupt()
+void PORTB_Interrupt()
 {
   int n;
   n=0;
-  if((PORTA_ISFR & (1<<n)))
+  if((PORTB_ISFR & (1<<n)))
   {
-      PORTA_ISFR |= (1<<n); 
+      PORTB_ISFR |= (1<<n); 
       /* 用户自行添加中断内程序 */
   } 
   n=1;
-  if((PORTA_ISFR & (1<<n)))
+  if((PORTB_ISFR & (1<<n)))
   {
-      PORTA_ISFR |= (1<<n); 
+      PORTB_ISFR |= (1<<n); 
       /* 用户自行添加中断内程序 */
   } 
 }

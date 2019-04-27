@@ -2494,10 +2494,10 @@
         <group>
             <name>PID</name>
             <file>
-                <name>$PROJ_DIR$\src\User\cxcpid.c</name>
+                <name>$PROJ_DIR$\src\User\PID.c</name>
             </file>
             <file>
-                <name>$PROJ_DIR$\src\User\cxcpid.h</name>
+                <name>$PROJ_DIR$\src\User\PID.h</name>
             </file>
         </group>
         <group>

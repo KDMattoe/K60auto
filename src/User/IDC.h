@@ -7,7 +7,7 @@
 #define RIGHT_F 3               //ÓÒ±ßË®Æ½
 
 
-extern uint16 IDC[4];
+extern int16 IDC[4];
 
 void IDC_get();
 #endif

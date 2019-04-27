@@ -38,15 +38,15 @@ u8 pit1_f=0;
 void drive_init(){
     PLL_Init(PLL200);                                   //初始化PLL为200M，总线为100MHZ  
     LCD_Init();
-    UART_Init(UART0,38400);                             //串口4初始化
+    UART_Init(UART4,38400);                             //串口4初始化
     int i=0;
     HCSR_Init();                                        //超声波传感器初始化 
     electrical_init();                                 //电机初始化
     ADC_Init(ADC0);
     for(i=0; i<HCSR_SENSOR_SIZE; i++){
-      EXTI_Init(PTB, sensor[i].ECHO, either_down);       //初始化外部中断
+      EXTI_Init(PTA, sensor[i].ECHO, either_down);       //初始化外部中断
     }
-    PIT_Init(PIT1, 20);                                 //定时器1用于控制周期 60MS一次中断 60*BUS
+    PIT_Init(PIT1, 10);                                 //定时器1用于控制周期 10MS一次中断 60*BUS
     PID_Init();                                         //PID初始化
 }
 
@@ -62,6 +62,6 @@ void main(void)
     
     while(1){
       pit1();
-      
+  
 }
 }
